@@ -1,0 +1,5 @@
+venv
+.idea
+.python-version
+__pycache__
+*.swp

@@ -1,0 +1,7 @@
+language: python
+
+services:
+  - docker
+
+script:
+  - docker-compose run -e TRAVIS=true api ./wait-for-it.sh db:5432 -- python manage.py test

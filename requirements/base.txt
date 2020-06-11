@@ -1,0 +1,8 @@
+Django==3.0.7
+psycopg2-binary==2.8.4
+djangorestframework==3.11.0
+djangorestframework-gis==0.15
+django-filter==2.2.0
+dateutils==0.6.7
+numpy==1.18.2
+tensorflow-cpu
