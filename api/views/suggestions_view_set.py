@@ -181,8 +181,8 @@ def get_single_workout_model_data(w, user, user_sports, fullness, now, common):
         ]
 
 
-def get_workout_recommendations(array: np.array):
-    weights = retrieve_model()  # JSON model
+def get_workout_recommendations(array: np.array, user: User):
+    weights = retrieve_model(user.id)  # JSON model
 
     (rows, columns) = array.shape
     selected_columns = [False for _ in range(columns)]
@@ -273,9 +273,7 @@ def _get_recommended_workouts(workouts, user):
     if filtered.size == 0:
         return Workout.objects.none()
 
-    from sys import stderr
-    print(filtered.ndim, file=stderr)
-    recommended = get_workout_recommendations(filtered)
+    recommended = get_workout_recommendations(filtered, user)
 
     # sort recommendations by value
     sorted_by_recommendation_value = recommended[recommended[:, 1].argsort()][::-1]

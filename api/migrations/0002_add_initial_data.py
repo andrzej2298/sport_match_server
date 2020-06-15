@@ -6,12 +6,9 @@ from api.models.constants import SPORTS
 
 def add_initial_data(apps, schema_editor):
     Sport = apps.get_model('api', 'Sport')
-    AIModel = apps.get_model('api', 'AIModel')
 
     for sport in SPORTS:
         Sport.objects.create(name=sport)
-
-    AIModel.objects.create(model={})
 
 
 class Migration(migrations.Migration):

@@ -31,8 +31,8 @@ def duplicate(x, n):
     return [x for _ in range(n)]
 
 
-def train_model(recently_suggested: np.array, chosen_workout: np.array):
-    weights = retrieve_model()
+def train_model(recently_suggested: np.array, chosen_workout: np.array, user: User):
+    weights = retrieve_model(user.id)
     one_data_in = duplicate(chosen_workout[1:], model.TRAIN_DATA_SIZE)
     filtered_recently_suggested = filter_chosen_from_suggested(recently_suggested, chosen_workout)
     
@@ -48,7 +48,7 @@ def train_model(recently_suggested: np.array, chosen_workout: np.array):
     data_in = np.array(one_data_in + zero_data_in)
     data_out = np.array(duplicate(1, len(one_data_in)) + duplicate(0, len(zero_data_in)))
     new_weights = model.train_model(weights, data_in, data_out)
-    update_or_create_model(new_weights)
+    update_or_create_model(user.id, new_weights)
 
 
 class ParticipationRequestViewSet(mixins.ListModelMixin,
@@ -88,7 +88,7 @@ class ParticipationRequestViewSet(mixins.ListModelMixin,
                     recent_workouts, user, user_sports, fullness, timezone.now(), common_with_recent
                 )
             ))
-            train_model(data, picked_workout_data)
+            train_model(data, picked_workout_data, user)
 
         return response
 
