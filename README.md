@@ -1,3 +1,17 @@
+# Sport Match
+Sport Match was written as a bachelor thesis by
+Gabilcious (https://github.com/Gabilcious)
+shaponiuk (https://github.com/shaponiuk) and
+andrzej2298 (https://github.com/andrzej2298)
+
+## Mobile application
+Sport Match application (https://github.com/Gabilcious/Sport-Match) focuses on integrating people via common workouts, that are handled by the system. The events are recommended to the users, taking into consideration their features and past choices of the users. A user has the possibility of joining a previously recommended event and the author can either accept or reject his participation request.
+The mobile application can be run on the Android operating system. However, the use of the Kotlin Multiplatform technology gives the opportunity to easily add other platforms, such as an iOS application, a Web application or a desktop application.
+
+## Server
+The backend was written in Django REST Framework and communicates with the app via the HTTP protocol. It also follows the REST principles. Furthermore, the backend uses the PostGIS database, which makes operations based on geographic data easier. The recommendation system is a part of the backend code. It was written using the Tensorflow framework.
+This is the repository containing the backend code.
+
 # Setup
 ```
 docker-compose build
